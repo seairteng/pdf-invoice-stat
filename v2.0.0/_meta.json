@@ -1,0 +1,28 @@
+{
+  "name": "pdf-invoice-stat",
+  "version": "2.0.0",
+  "description": "PDF 增值税发票 + 火车票 + 通行费抽取工具，本地 pdfplumber，输出格式化 Excel。修复通行费跨行 bug，新增命令行参数、康熙字典、水印页兜底、多税率留空、布局感知。",
+  "author": "seairteng",
+  "tags": ["发票", "PDF", "增值税", "火车票", "通行费", "Excel", "财务", "报销"],
+  "inputs": {
+    "pdf_path": {
+      "type": "string",
+      "required": true,
+      "description": "PDF 文件路径（合并多张发票的 PDF）"
+    },
+    "output_path": {
+      "type": "string",
+      "required": false,
+      "description": "输出 Excel 路径（可选，默认在 PDF 同目录生成 <原文件名>_发票统计.xlsx）"
+    }
+  },
+  "outputs": {
+    "excel": {
+      "type": "file",
+      "description": "发票统计 Excel（15 列：序号/发票号/日期/购方/购方税号/销售方/销售方税号/项目/金额/税率/税额/价税合计/备注/报销人/报销日期）"
+    }
+  },
+  "requires": ["pdfplumber", "openpyxl"],
+  "platform": "local",
+  "license": "MIT-0"
+}
